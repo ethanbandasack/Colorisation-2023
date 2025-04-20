@@ -1,16 +1,15 @@
 # Colorisation-2023
 
-L’association d'intelligence artificlle de CentraleSupélec, Automatants, a mis en place des projets de première année : un étudiant de deuxième année de l’association encadrait plusieurs nouveaux membres dans le cadre d’un premier projet pour découvrir l’IA.
+The artificial intelligence association of CentraleSupélec, Automatants, has set up first-year projects: a second-year student from the association supervised several new members as part of an introductory project to discover AI.
 
-Le projet auquel j’ai été affecté concernait la colorisation de mangas et de bandes-dessinées. En effet, les mangas deviennent de plus en plus populaires mais restent en noir et blanc. Il existe des versions colorisées pour certaines licences mais demandent du travail de la part de l’auteur ou de fans. Lorsqu’elles sont commercialisées, il s’agit d’un produit plébiscité. Le projet pourrait servir aux fans voulant avoir rapidement une version colorisée de leur série préférée. L’utilisation professionnelle de l’intelligence artificielle par des maisons d’édition et des auteurs eux-mêmes est aujourd’hui très controversée, mais elle reste possible : il n’est pas impossible que certaines maisons d’édition commandent de tels produits pour proposer une colorisation rapide et à bas coût.
+The project I was assigned to involved the colorization of manga and comics. Indeed, manga is becoming increasingly popular but remains in black and white. There are colored versions for some licenses, but they require work from the author or fans. When commercialized, it is a highly sought-after product. The project could be useful for fans who want a quick colored version of their favorite series. The professional use of artificial intelligence by publishers and authors themselves is highly controversial today, but it remains possible: it is not impossible that some publishers might commission such products to offer quick and low-cost colorization.
 
+The project is based on a GAN (Generative Adversarial Network) architecture: a generator on one hand, and a discriminator on the other. The generator produces colored images, and the discriminator judges whether the image is generated (fake colored image) or hand-colored (real colored image). The generator tries to deceive the discriminator, which in turn tries not to be "fooled." As they improve, the colorizations become more and more credible. The generation process uses a U-net: the base black-and-white image is decomposed into various smaller components, each representing precise information, and then reconstructed into a standard-sized but colored image.
 
-Le projet repose sur une architecture de GAN (réseaux antagonistes) : d’une part un générateur, et d’autre part un discriminateur. Le générateur produit des images colorisées et le discriminateur juge si l’image est générée (fausse image colorisée) ou si elle est a été colorisée à la main (vraie image colorisée). Le générateur cherche à tromper le discriminateur qui lui cherche à ne pas se « faire avoir ». En s’améliorant, les colorisations deviennent de plus en plus crédibles. La génération passe par un réseau en U (U-net) : l’image en noir et blanc de base est décomposée en différentes composantes de plus petites tailles représentant chacune des informations précises, pour ensuite repasser sur une image aux dimensions classiques, mais colorisée.
+After training on a large dataset, the model is supposed to be able to colorize other images (generalization step).
 
-Après s’être entraîné sur une grande base de données, le modèle est censé pouvoir coloriser d’autres images (étape de généralisation).
+The basic GAN architecture struggles to generalize to other images, which is why it is necessary to improve the model: using ResNet, cycle GAN, or specific cost functions.
 
-L’architecture GAN de base a du mal à généraliser à d’autres images, c’est pourquoi il est nécessaire d’améliorer le modèle : utilisation de ResNet, cycle GAN, ou utilisation de fonctions de coûts particulières.
+Note that the dataset is not composed of black-and-white/colored image pairs for training, which is why a black-and-white image was generated from the colored image.
 
-A noter que le dataset n'est pas composé de couples image noir et blanc / image en couleurs pour l’entraînement, c’est pourquoi une image en noir et blanc était générée à partir de l’image en couleurs.
-
-Les résultats obtenus sont assez mitigés : il y a une amélioration de l’image mais elle reste globalement en noir et blanc.
+The results obtained are somewhat mixed: there is an improvement in the image, but it remains mostly black and white.
